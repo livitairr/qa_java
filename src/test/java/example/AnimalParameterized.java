@@ -13,8 +13,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class AnimalParameterized {
     private Animal animal;
-    private String animalKind;
-    private List<String> expectedFoods;
+    private final String animalKind;
+    private final List<String> expectedFoods;
 
     public AnimalParameterized(String animalKind, List<String> expectedFoods) {
         this.animalKind = animalKind;

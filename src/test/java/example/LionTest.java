@@ -1,55 +1,61 @@
-package com.example;
+package example;
 
-import org.hamcrest.MatcherAssert;
-import org.junit.Rule;
+import com.example.Feline;
+import com.example.Lion;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
 
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
+    private static final String MALE = "Самец";
+    private static final String UNSUPPORTED_SEX = "unsupported sex";
+    private static final String TEXT_EXCEPTION = "Используйте допустимые значения пола животного - самей или самка";
+    private static final List<String> EXPECTED_FOOD = List.of("Пища");
+
     @Mock
-    Feline feline;
+    private Feline feline;
 
-    @Test
-    public void createLionThrowsException() throws Exception {
-        expectedEx.expect(Exception.class);
-        expectedEx.expectMessage("Используйте допустимые значения пола животного - самец или самка");
+    private Lion lion;
 
-        new Lion(feline, "Не определено");
+    @Before
+    public void setUp() throws Exception {
+        lion = new Lion(feline, MALE);
     }
 
     @Test
-    public void getKittensIsCorrect() throws Exception{
-        Lion lion = new Lion(feline, "Самец");
-        int expectedCount = 5;
-        Mockito.when(feline.getKittens()).thenReturn(expectedCount);
+    public void testGetKittens() {
+        int expectedKittens = 5;
+        when(feline.getKittens()).thenReturn(expectedKittens);
 
-        MatcherAssert.assertThat("Некорректное количество котят",
-                lion.getKittens(),
-                equalTo(expectedCount)
-        );
+        assertThat(lion.getKittens()).isEqualTo(expectedKittens);
+        verify(feline).getKittens();
     }
 
     @Test
-    public void getFoodIsCorrect() throws Exception {
-        Lion lion = new Lion(feline, "Самец");
-        List<String> expectedListOfFood = List.of("Пища");
-        Mockito.when(feline.eatMeat()).thenReturn(expectedListOfFood);
+    public void testDoesHaveManeException() {
+        Throwable throwable = catchThrowable(() -> new Lion(feline, UNSUPPORTED_SEX));
 
-        MatcherAssert.assertThat("Некорректный список еды",
-                lion.getFood(),
-                equalTo(expectedListOfFood)
-        );
+        assertThat(throwable).isInstanceOf(Exception.class)
+                .hasMessage(TEXT_EXCEPTION);
+    }
+
+    @Test
+    public void testGetFood() throws Exception {
+        when(feline.getFood("Хищник")).thenReturn(EXPECTED_FOOD);
+
+        assertThat(lion.getFood()).isEqualTo(EXPECTED_FOOD);
+        verify(feline).getFood("Хищник");
     }
 }
