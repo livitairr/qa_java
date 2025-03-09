@@ -1,7 +1,6 @@
 package example;
 
 import com.example.Feline;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Spy;

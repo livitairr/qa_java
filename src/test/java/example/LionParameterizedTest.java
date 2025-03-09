@@ -47,3 +47,5 @@ public class LionParameterizedTest {
         assertEquals(hasMane, lion.doesHaveMane());
     }
 }
+
+// ошибка в коммите, дубль два

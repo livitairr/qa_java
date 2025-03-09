@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -59,3 +58,5 @@ public class LionTest {
         verify(feline).getFood("Хищник");
     }
 }
+
+// ошибка в коммите, дубль два

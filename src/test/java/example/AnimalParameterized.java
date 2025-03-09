@@ -40,3 +40,5 @@ public class AnimalParameterized {
         assertEquals("Список еды для животных не совпадает с ожидаемым", expectedFoods, actualFoods);
     }
 }
+
+// ошибка в коммите, дубль два
