@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
 
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -47,3 +48,4 @@ public class LionParameterizedTest {
         assertEquals(hasMane, lion.doesHaveMane());
     }
 }
+//test two

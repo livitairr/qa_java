@@ -1,7 +1,6 @@
 package example;
 
 import com.example.Feline;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Spy;
@@ -9,6 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import static org.junit.Assert.assertEquals;
+
 
 @RunWith(MockitoJUnitRunner.class)
 public class FelineTest {
@@ -41,3 +41,4 @@ public class FelineTest {
         assertEquals(kittensCount, feline.getKittens(kittensCount));
     }
 }
+//test two

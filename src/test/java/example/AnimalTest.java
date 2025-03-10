@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.Assert.assertEquals;
 
+
 public class AnimalTest {
 
     private Animal animal;
@@ -31,3 +32,5 @@ public class AnimalTest {
         assertEquals("Ответ не соответствует ожидаемому", "Существует несколько семейств: заячьи, беличьи, мышиные, кошачьи, псовые, медвежьи, куньи", actual);
     }
 }
+
+//test two
