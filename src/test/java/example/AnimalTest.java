@@ -33,4 +33,4 @@ public class AnimalTest {
     }
 }
 
-// ошибка в коммите, дубль два
+//test
